@@ -9,4 +9,12 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="native\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(SolutionDir)native\*.dll&quot; &quot;$(TargetDir)&quot; /s /e /y /k /d" />
+  </Target>
+
 </Project>
